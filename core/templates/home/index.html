@@ -1,0 +1,213 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/theme.default.css' %}" type="text/css">
+{% load templatehelpers %}
+{% block header %}
+    <title>Home</title>
+{% endblock %}
+{% block content %}
+    <!-- Header End -->
+  <div class="container-fluid" style="border: 2px solid black;">
+    <!-- <section class="contact-section"> -->
+    <!-- <section style="padding: 30px 0 18px 0; background-image:url({% static 'images/dark-black-and-white-architecture-skyscraper.jpg' %});background-size: cover;"> -->
+<form  method="GET"  class="col-lg-8 col-md-8 col-sm-8" id="main-form">
+
+   
+    <!-- <input type="password" placeholder="Password"> -->
+    <div class="container-fluid">
+      <input style="margin: 22px 0 22px 30px;" id="search" name="search" type="text" placeholder="Search . . ." {% if request.session.search is not None  %} value="{{request.session.search}}"{% endif %}>
+  
+      <div class="btn-group col-lg-12 col-md-12 col-sm-12">
+          <!-- <div class="col-lg-7 col-md-6 col-sm-6">
+          <button id="filter-btn" type="button" class="site-btn col-lg-7 col-md-12 col-sm-12" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Filter</button>
+        </div> -->
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <button type="submit" class="site-btn col-lg-9 col-md-12 col-sm-12">Search</button>
+        </div>
+
+      </div>
+    </div>
+    <div class="container">
+      <!-- <form id="fil-form" action="{% url 'filter' %}" method="GET" class="filter-form"> -->
+        <!-- <div class="collapse" id="collapseExample" style="margin-top:3% ;"> -->
+          <hr>
+
+            <div class="form-row" style="margin-left: 31px">
+            <label style="margin-top: 1%;" for="price_min">Price&nbsp;(€)</label>
+            <div class="col-5">
+              <input style="padding: 10px !important;height: 35px !important;" id="price_min" name="price_min" type="number" class="textbox-form col-5" placeholder="Price_Min" {% if request.session.price_min is not None  %} value="{{request.session.price_min}}"{% endif %}>
+<!--            </div>-->
+            <label style="margin-top: 1%;" for="price_max">To</label>
+<!--            <div class="col">-->
+              <input style="padding: 10px !important;height: 35px !important;" id="price_max" name="price_max" type="number" class="textbox-form col-5" placeholder="Price_Max" {% if request.session.price_max is not None  %} value="{{request.session.price_max}}"{% endif %}>
+            </div>
+          </div>
+
+          <hr>
+         <div class="form-row" style="margin-left: 31px">
+            <label style="margin-top: 1%;" for="qm_min">qm&nbsp;(㎡)</label>
+            <div class="col-5">
+              <input style="padding: 10px !important;height: 35px !important;" id="qm_min" name="qm_min" type="number" class="textbox-form col-5" placeholder="qm_min" {% if request.session.qm_min is not None  %} value="{{request.session.qm_min}}"{% endif %}>
+<!--            </div>-->
+            <label style="margin-top: 1%;" for="qm_max">To</label>
+<!--            <div class="col">-->
+              <input style="padding: 10px !important;height: 35px !important;" id="qm_max" name="qm_max" type="number" class="textbox-form col-5" placeholder="qm_max" {% if request.session.qm_max is not None  %} value="{{request.session.qm_max}}"{% endif %}>
+            </div>
+          </div>
+          <hr>
+          <div class="form-row" style="margin-left: 31px">
+            <label style="margin-top: 1%;" for="location">Location</label>
+            <div class="col-5">
+              <input style="padding: 10px !important;height: 35px !important;" id="location" name="location" type="text" class="textbox-form" placeholder="Location" {% if request.session.location is not None  %} value="{{request.session.location}}"{% endif %}>
+            </div>
+          </div>
+          <hr>
+            <div class="form-row" style="margin-left: 25px">
+            <div class="col">
+                <label class="form-check-label" for="approved">Approved:</label><input value="approved" name="approved" class="col-1 form-check-input" style="height: 12px !important;margin-top: 8px;margin-left: -2%"  id="approved" type="checkbox" {% if request.session.approved is not None  %}checked{% endif %}>
+            </div>
+          </div>
+            <hr>
+
+          <div class="form-check" style="margin-left: 9px">
+              <hr>
+                 <div class="form-row">
+            <div class="col">
+                <label class="form-check-label" for="approved">Show</label><select id="enter" name="enter">
+                 <option value="{{ request.session.num }}" selected disabled hidden>{{ request.session.num }}</option>
+                 <option value="15">15</option>
+                 <option value="30">30</option>
+                 <option value="60">60</option>
+                 <option value="90">90</option>
+                 <option value="1000">all</option>
+                    </select>Entery
+            </div>
+          </div>
+              <hr>
+              <div class="btn-group col-7" style="margin-left: -29px;">
+              <div class="col-lg-5 col-md-6 col-sm-6">
+            <button  type="submit" class="site-btn">Applay</button>
+              </div>
+                  <div class="col-lg-5 col-md-6 col-sm-6">
+            <button type="button" id="reset" class="site-btn">Reset</button>
+                  </div>
+        </div>
+        </div>
+        <!-- </div> -->
+      <!-- </form> -->
+    </div>
+  </form>
+</div>
+          <!-- </section> -->
+          
+<br><br><br><br><br><br><br><br><br><br><br><br>
+          <div class="container-fluid" style="margin-top: -10%;background-color: #e5e5e538">
+<!--              <div class="col">-->
+                  <div class="container-fluid" style="display: initial;">
+                      <div id="table-div" style="background-color: white">
+                          <table id="tb" class="table tablesorter table-striped">
+                              <thead>
+                                <tr style="background-color: #357fa3fa;">
+                                  <th scope="col">Location</th>
+                                  <th scope="col">Approved</th>
+                                  <th scope="col">QM</th>
+                                  <th scope="col">Room</th>
+                                  <th scope="col">Price</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              {% for info in table %}
+                                <tr>
+                                  <td>{{info.location}}</td>
+                                  <td>{% if info.approved is 2 %}Approved{% elif info.approved is 1 %}Pending{% elif info.approved is 0 %}Not Approved{% endif %}</td>
+                                  <td>{{info.qm}}</td>
+                                  <td>{{info.room}}</td>
+                                  <td>{{info.price}}</td>
+                      
+
+                                    </tr>
+                              {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
+
+                        </div>
+                      </div><br><br><br><br><br><br><br><br><br>
+                        {% if table.has_other_pages %}
+                      <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center" style="margin-top: -7%;margin-right: 3%;">
+                  {% if table.has_previous %}
+                <li class="page-item">
+                  <a id="prev" class="page-link" href="{% filter_url table.previous_page_number 'page' request.GET.urlencode %}">Previous</a>
+                </li>
+                  <li class="page-item disabled"><a class="page-link">. . .</a></li>
+                  {% else %}
+                  <li class="page-item disabled">
+                  <a class="page-link">Previous</a>
+                </li>
+                  <li style="display: none" class="page-item disabled"><a class="page-link">. . .</a></li>
+                  {% endif %}
+                  {% for i in table.paginator.page_range %}
+                  {% if table.number == i %}
+                  <li class="page-item active">
+                      <span class="page-link">
+                        {{ i }}
+                        <span class="sr-only">(current)</span>
+                      </span>
+                    </li>
+                  {% elif i > table.number|add:-3 and i < table.number|add:3 %}
+                 <li class="page-item"><a class="page-link" href="{% filter_url i 'page' request.GET.urlencode %}">{{ i }}</a></li>
+                  {% endif %}
+                 {% endfor %}
+                {% if table.has_next %}
+                  <li class="page-item disabled"><a class="page-link">. . .</a></li>
+                <li class="page-item">
+                  <a id="nex" class="page-link" href="{% filter_url table.next_page_number 'page' request.GET.urlencode %}">Next</a>
+                </li>
+                 {% else %}
+                  <li class="page-item disabled">
+                  <a class="page-link">Next</a>
+                </li>
+                  <li style="display: none" class="page-item disabled"><a class="page-link">. . .</a></li>
+                     {% endif %}
+                   </ul>
+                    {% endif %}
+            </nav>
+                  
+<!--              </div>-->
+          
+<!--      </div>-->
+
+  <!-- </section> -->
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src=" {% static 'js/jquery.tablesorter.min.js' %}"></script>
+  <script src=" {% static 'js/jquery.tablesorter.widgets.min.js' %}"></script>
+  <script>
+    $(function(){
+      $('table').tablesorter({
+        widgets        : [],
+        usNumberFormat : false,
+        sortReset      : true,
+        sortRestart    : true
+      });
+    });
+    </script>
+<script>
+  $(document).ready(function(){
+$("#reset").click(function(){
+$("#search").val('');
+$("#price_min").val('');
+$("#price_max").val('');
+$("#qm_min").val('');
+$("#qm_max").val('');
+$("#location").val('');
+$('#approved').removeAttr('checked');
+
+});
+});
+</script>
+
+{% endblock %}
